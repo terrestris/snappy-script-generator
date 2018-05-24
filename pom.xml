@@ -20,19 +20,19 @@
     <repository>
       <id>nexus.terrestris.de-releases</id>
       <name>Nexus Release Repository</name>
-      <url>https://nexus.terrestris.de/repository/geoserver-extras/</url>
+      <url>https://nexus.terrestris.de/repository/misc/</url>
     </repository>
     <snapshotRepository>
       <id>nexus.terrestris.de-snapshots</id>
       <name>SHOGun Snapshot Repository</name>
-      <url>https://nexus.terrestris.de/repository/geoserver-extras/</url>
+      <url>https://nexus.terrestris.de/repository/misc/</url>
     </snapshotRepository>
   </distributionManagement>
 
   <repositories>
     <repository>
       <id>nexus.terrestris.de</id>
-      <url>https://nexus.terrestris.de/repository/public//</url>
+      <url>https://nexus.terrestris.de/repository/public/</url>
       <releases><enabled>true</enabled></releases>
       <snapshots><enabled>true</enabled></snapshots>
     </repository>
