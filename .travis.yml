@@ -14,11 +14,9 @@ env:
   global:
     secure: L2N2vk9drOEqhoXofrkWDWDzglkOC8Nn/YXRYIQp1/2kXPTwgRYP/IgUL8/QhWZDM77lVkXBVNFMacBD1au5olohM6WwpSnjXHorqqx6arYUrMGuWZlayeuGSIUS/slxLN4MmWI8eHujx25reOTFyvigQsye8ksFblVHY1un3/AvM8cH7YOt6fRM5q/C65TuoKJW/b7E5oqvsX/79AoE9eJBNr69hq/70yyRxFqClB2AKo/foN7b/4Tcg3295BY1ZPN4DiPf7j7jrjIEKxSXw2mLpzU1qcoh7IBEo0acd9eIvvGKD1HRIzudGQTbcSezKryO8yzujM+XQysD2ocyJ2G1mlfQlIBFeJjVGHGCTDmht4ZqshYuwWyeWdxcE3ivm2TQXrcw9tSV6MICf1wQW6ZEnQevs613NmsJG7fdlX4hTpGvnSj+rd4ou9krKBNs/rleExH2UPLqzlrWOT1hqUYS6U43IYEh7kREVp1T/TJm3QsG3c3mk+Ao50v+THLM9gQ/GQdoWppWmsMf6S8R+nBXKRkOx7Z5K4T95qRrGJcQaMbKDmWjp49QOrGe7qe+aKYy0uPIFN+Lip0pjpLnHwa0Sc5kAKWqUTfhu1Bnw5CbPuL448EGL2Y+Y6AqpFtuUb/ldADgrRNNRF5Q0FVKZuIyeo8oNoUFFL4Zs+fSaYE=
 
-before_script:
+script:
   - mkdir -p $HOME/.m2
   - echo "<settings xmlns='http://maven.apache.org/SETTINGS/1.0.0'><servers><server><id>nexus.terrestris.de-snapshots</id><username>gs-deploy</username><password>$DEPLOY_PASSWORD</password></server></servers></settings>" > $HOME/.m2/settings.xml
-
-script:
   - mvn --batch-mode clean deploy
 
 notifications:
