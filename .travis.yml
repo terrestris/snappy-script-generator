@@ -16,6 +16,7 @@ env:
   - secure: TK+Y2X5jkVlq2TjZFhJ4bXDTRIiqpPC7uveD/duTD3cQ7l/84twZknU4sIVJ2oaa5tUpTSDhuk1tmoPSULPfD673SJz1Kx1S1NJUKHbq1lmB8mtok7OFoOLuchC8LcttIcbM1jLl+OiygEdTyd+B9rWY1M960CQfutPy+t4uiCk5B516BdyTVhaUC2FXASDJqBnW40+D4VaDr9hVrQRa0EI1LL5TDvfc+aajmL7Z7K/c5EeW3fMdg12niXA42Ga7vYKtcw3ynFL4ACs9c6NviuANIAw0XWAYRdtBoZ6SulfgjlYCVI5npyMzKx7/fbJLL9FKktfnUCa6aHXUuo4gE/VXC82SIbKPvqyI/gI8HCPoi72r0pGCeuYDK6ZEOPPyBLYqMX0jtDVWi9q0ZRB9Ey91/SAqm3fx7/Y88RM97OBojo5k/J1CqCOlqCpy7IulF6tgaYejtNZ51adSIS6vwwcOShUaw7Pkk0IWeOJ7gAxy1CHURWSIlXZkrWshmW0E/QrkwqfpjxELnpbOWpMZO78+8e0n8H0J2nCtzNCeNJpw1zZGBhrpEr0aH8nd4TlEX7daYKrvUcPI5vPLk29O59Qx91FDEZE95ROPGYq4duK0N6ZtRh0M4n6bdiCP8YimVvJJqx+8suYjN3P6mIv5uhRHYa2r4r4vO5eHBtE0BEc=
 
 script:
+- echo Secure vars: $TRAVIS_SECURE_ENV_VARS
 - mkdir -p $HOME/.m2
 - echo "<settings xmlns='http://maven.apache.org/SETTINGS/1.0.0'><servers><server><id>nexus.terrestris.de-snapshots</id><username>$DEPLOY_USERNAME</username><password>$DEPLOY_PASSWORD</password></server></servers></settings>" > $HOME/.m2/settings.xml
 - if [ "$TRAVIS_BRANCH" == "master" -a "$TRAVIS_PULL_REQUEST" == "false" ]; then mvn --batch-mode clean deploy; fi
