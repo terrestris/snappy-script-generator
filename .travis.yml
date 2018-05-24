@@ -16,7 +16,7 @@ env:
 
 before_script:
   - mkdir -p $HOME/.m2
-  - echo '<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"><servers><server><id>nexus.terrestris.de-snapshots</id><username>gs-deploy</username><password>$DEPLOY_PASSWORD</password></server></servers></settings>' > $HOME/.m2/settings.xml
+  - echo "<settings xmlns='http://maven.apache.org/SETTINGS/1.0.0'><servers><server><id>nexus.terrestris.de-snapshots</id><username>gs-deploy</username><password>$DEPLOY_PASSWORD</password></server></servers></settings>" > $HOME/.m2/settings.xml
 
 script:
   - mvn --batch-mode clean deploy
