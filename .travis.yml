@@ -12,14 +12,14 @@ jdk:
 
 env:
   global:
-  - secure: "DKGzZxiKU6dkdgCNXXfjboTXps14TqTfarRBzmhGOPveMTOCdGBVmxiKZdoARv8jMiEvDzVwDH611awSgJZlb9dHzz0T+nA/gsrii7WKKnG0mQIRACGXFak5Zba+hbWwHz0WhbNUZqTSWTPXvKtw6qdRtphxTpScOt7hwE/T+y+dLvSmNXC6cdvHtfClRWc4Rv9F6OFCYFaZx1hFYU7w0enEwSy1G3PXDWjti9dmGUitWTpr+o2wskMsgNgoYcRbDhAwnW/jZhxNgUxzDVZ7fClZCaFkETWe4eoG4U0gnZnnX4dy0OBa46cReuV7nSID9vWt4KfOjAPVXwHweUA7B5xoMdd02YmpEeBowclwnaThEHfEEwS/bipr9sxH1X2CN5N3Wcos2iAGkMLwUkjLOm71Y5a5A3fIZqtnvuBg9uMLJTfgH327O4XEANvMPVLIAgeS6h29kmd8UY/QDZ8SesteaLT2zqltDjwVe8DHmh3NA64AKw8liNcSqGLf9/FoTzw7D0VgUHGH6dujXQARqsyKofPP+sPX92lZjhYcZ3bmp6A4cJn4Z9VH3yrM8Yd9DhKn4Vo6NX2C1doLQmbkFN9mZrxE2YfucBCC39rhN6KZ047rM23/ElQhSdehnMzHuhUa5IsYNCSSAuoQF4cgEUadKh9Hg1YL+Z6Ayg3MfAE="
-  - secure: "ro1fE/bu2cdruczEYofvdpvfrPcEZIGTTXH//jUPEbGeAtMc3IsoXJs0fOq1VFq7taA5FO0iwzsgfmSdUckD9FysBgCwinSkXQRUZjgFKfQHF/nrD8TXyHmN88SQGe1PphIXqS1iafGzjxDGRjX6DoLNu26FQQSWr9h25PSVE2vQKg56nB8kNOn9IhmMuuLWa5FRTAjrhP5pPzWLVOWdoo6YQBe34dCX8X3HO8Sn0i/L/Rvb7q2O3LQxRRh3Vt1d7yqcDBbbwXEHUpgcMQsG1O/Xi5tu5cB+M6A9DM9KEEQW8nY27ifXtosn5GnhCY/OByMa/Wlvag4m1aDCTyBYmznaSg8Rj5SOZlfpKJXZeJPgeMTGp4SEAGhVIy5tRA31oNq+MuxrGazF5lB1hLeIWOXWe2T3QE9WsmkoQU37QgVL8RLIvnp1XVQK8lTygHWS4RylEjKmN25waa9gXrfm0wJKkfIRmi2AwNugLnmp9zfXhLxaK65HELOZCOPxZucQbSy1OlfIm8c0D9US/tc8r9Wh8UWnpYwvGqKPbQuLyA40X80VkoSzpzwBk6tcDcjbs8ox7LCclKmYfXdy0eBEybIKI+A5lTjqLgqQ+AsxbpGg2nIdOM4oncGGF0BpTK0lJ3xlU4UVKW2tmtK2BQIr5IxH14BymFATm66W36zG3Do="
+  - secure: HHElqkiP0pmdFa8RrHeqsvfZZU5/d66s2Ve3ff/Y/UPIUsNvXorXJaGj+OUQb0rocyakifd9+ZVT4ADw3q3dFZxUmT9wE8/lNDIjt1MwUh56L4SDj4Dc0zeavtIfiPMWmsMPRajaRV6qoIz7mVtCeChmcN/Z+jPelOqd+sbSOMCVeOD9PO/8HqkN+Y7UKORRPRho9u5qVCoDcrdFlf/c48UYqxDCYxwfmWZ4AvJj7qiY4BDgSifh+jZfjhlg7DUTu2SaFTMPoAN+Le46p0ptmfbHLWUcNZxBNIrdq9CPnfUCAbR2Mcj6sJO2jWK635Vpn29B4Xy8acO8fx38PUBS14aW3FBfLOcL/b7J6bIxf81HrycWxFV+pElkRDRjoA2h3bOYg/c8vC+8Rbsku2C9qGWW19Q10pnMmM5k8qkfr7cZmDkCixn0XO02kO9owUzUNqYnMt19PifkvIRWZa/AWL/CHFQNzFG7fdYDMjpP/WLcFDuZcL3F/bUdAglIHnnkCF/6i1bAjWy+HqkWeUc4r1GEvKvNB/oZ4eMMAoW5ekmGjp4PResC2jmTXPX8aTKNE7ABJx1sGCPvT6JAUndto+iHqEkHQvgHO1cRMDJ+AAI+3OkH8lL0hKfAdk1p2tXCZQjotcSP8PG/thSVn5F/KXKie3hc67GaQwJOrDutISs=
+  - secure: ro1fE/bu2cdruczEYofvdpvfrPcEZIGTTXH//jUPEbGeAtMc3IsoXJs0fOq1VFq7taA5FO0iwzsgfmSdUckD9FysBgCwinSkXQRUZjgFKfQHF/nrD8TXyHmN88SQGe1PphIXqS1iafGzjxDGRjX6DoLNu26FQQSWr9h25PSVE2vQKg56nB8kNOn9IhmMuuLWa5FRTAjrhP5pPzWLVOWdoo6YQBe34dCX8X3HO8Sn0i/L/Rvb7q2O3LQxRRh3Vt1d7yqcDBbbwXEHUpgcMQsG1O/Xi5tu5cB+M6A9DM9KEEQW8nY27ifXtosn5GnhCY/OByMa/Wlvag4m1aDCTyBYmznaSg8Rj5SOZlfpKJXZeJPgeMTGp4SEAGhVIy5tRA31oNq+MuxrGazF5lB1hLeIWOXWe2T3QE9WsmkoQU37QgVL8RLIvnp1XVQK8lTygHWS4RylEjKmN25waa9gXrfm0wJKkfIRmi2AwNugLnmp9zfXhLxaK65HELOZCOPxZucQbSy1OlfIm8c0D9US/tc8r9Wh8UWnpYwvGqKPbQuLyA40X80VkoSzpzwBk6tcDcjbs8ox7LCclKmYfXdy0eBEybIKI+A5lTjqLgqQ+AsxbpGg2nIdOM4oncGGF0BpTK0lJ3xlU4UVKW2tmtK2BQIr5IxH14BymFATm66W36zG3Do=
 
 script:
-  - mkdir -p $HOME/.m2
-  - echo "<settings xmlns='http://maven.apache.org/SETTINGS/1.0.0'><servers><server><id>nexus.terrestris.de-snapshots</id><username>$DEPLOY_USERNAME</username><password>$DEPLOY_PASSWORD</password></server></servers></settings>" > $HOME/.m2/settings.xml
-  - if [ "$TRAVIS_BRANCH" == "master" -a "$TRAVIS_PULL_REQUEST" == "false" ]; then mvn --batch-mode clean deploy; fi
-  - if [ "$TRAVIS_BRANCH" != "master" -o "$TRAVIS_PULL_REQUEST" != "false" ]; then mvn --batch-mode clean install; fi
+- mkdir -p $HOME/.m2
+- echo "<settings xmlns='http://maven.apache.org/SETTINGS/1.0.0'><servers><server><id>nexus.terrestris.de-snapshots</id><username>$DEPLOY_USERNAME</username><password>$DEPLOY_PASSWORD</password></server></servers></settings>" > $HOME/.m2/settings.xml
+- if [ "$TRAVIS_BRANCH" == "master" -a "$TRAVIS_PULL_REQUEST" == "false" ]; then mvn --batch-mode clean deploy; fi
+- if [ "$TRAVIS_BRANCH" != "master" -o "$TRAVIS_PULL_REQUEST" != "false" ]; then mvn --batch-mode clean install; fi
 
 notifications:
   email:
