@@ -12,11 +12,12 @@ jdk:
 
 env:
   global:
-    - secure: "ro1fE/bu2cdruczEYofvdpvfrPcEZIGTTXH//jUPEbGeAtMc3IsoXJs0fOq1VFq7taA5FO0iwzsgfmSdUckD9FysBgCwinSkXQRUZjgFKfQHF/nrD8TXyHmN88SQGe1PphIXqS1iafGzjxDGRjX6DoLNu26FQQSWr9h25PSVE2vQKg56nB8kNOn9IhmMuuLWa5FRTAjrhP5pPzWLVOWdoo6YQBe34dCX8X3HO8Sn0i/L/Rvb7q2O3LQxRRh3Vt1d7yqcDBbbwXEHUpgcMQsG1O/Xi5tu5cB+M6A9DM9KEEQW8nY27ifXtosn5GnhCY/OByMa/Wlvag4m1aDCTyBYmznaSg8Rj5SOZlfpKJXZeJPgeMTGp4SEAGhVIy5tRA31oNq+MuxrGazF5lB1hLeIWOXWe2T3QE9WsmkoQU37QgVL8RLIvnp1XVQK8lTygHWS4RylEjKmN25waa9gXrfm0wJKkfIRmi2AwNugLnmp9zfXhLxaK65HELOZCOPxZucQbSy1OlfIm8c0D9US/tc8r9Wh8UWnpYwvGqKPbQuLyA40X80VkoSzpzwBk6tcDcjbs8ox7LCclKmYfXdy0eBEybIKI+A5lTjqLgqQ+AsxbpGg2nIdOM4oncGGF0BpTK0lJ3xlU4UVKW2tmtK2BQIr5IxH14BymFATm66W36zG3Do="
+  - secure: "ptBc95dsxTl9TzaV+f8408Oii5Yfie/iY8MU9jd6/vFxcno/AD3OZGfTA6/YhUSQMdcVWL0qYLIyATlz2MxYat3ONBwd+bfojretzxaODYSyCEuYn8M9OozHFm4wqbVTtv6h4SqlkizEaDWmVfSd9cvICFinfMLNsspanw7BWF8wocA1LqtHybEfhGuLUXaRrajAkK8B/uqs8WYDrEM2IWGTLsM5449zNG+BYqlJayx47r/FgDEfKIYyqmVivnI9zcsv2ojFPuokOe3d/1uieilVGX0nhmWqaOSpZdYmfaDJclq8lV5grtqXaD18GTBzvYjcARNO7nplxE3MGU1zNbilaqWisDop0Xlz+7fgLulpsvrSAAWxoo84pWtn9yxIzQThoxgFGVR8GcETMsv9O154fK1Z6PlPQRr7pktIraWgdZ3dw59JQF+LrxZ8MMxV5Ox3W6R4NgjidaGEzLo/FIxbCaq0rpZzHXKZ0RcZ9pNFuXGpC5VojjaSXIqMXo8gnbkMeu5XCeBxpEMt2I0cIaMCAhFXZN1KmDH4p+LICfp0OyH4MNyfetRS1vjjRQa2jbr9fL22R3v2pm25YEQINhrIqRqDsKZp411dNo5YlnlLEw4m//s9IL6vgJlxEHX0o6u1ZQrG1yD4war7h393ldtzHzEPS4saAPAbFc7FQwA="
+  - secure: "ro1fE/bu2cdruczEYofvdpvfrPcEZIGTTXH//jUPEbGeAtMc3IsoXJs0fOq1VFq7taA5FO0iwzsgfmSdUckD9FysBgCwinSkXQRUZjgFKfQHF/nrD8TXyHmN88SQGe1PphIXqS1iafGzjxDGRjX6DoLNu26FQQSWr9h25PSVE2vQKg56nB8kNOn9IhmMuuLWa5FRTAjrhP5pPzWLVOWdoo6YQBe34dCX8X3HO8Sn0i/L/Rvb7q2O3LQxRRh3Vt1d7yqcDBbbwXEHUpgcMQsG1O/Xi5tu5cB+M6A9DM9KEEQW8nY27ifXtosn5GnhCY/OByMa/Wlvag4m1aDCTyBYmznaSg8Rj5SOZlfpKJXZeJPgeMTGp4SEAGhVIy5tRA31oNq+MuxrGazF5lB1hLeIWOXWe2T3QE9WsmkoQU37QgVL8RLIvnp1XVQK8lTygHWS4RylEjKmN25waa9gXrfm0wJKkfIRmi2AwNugLnmp9zfXhLxaK65HELOZCOPxZucQbSy1OlfIm8c0D9US/tc8r9Wh8UWnpYwvGqKPbQuLyA40X80VkoSzpzwBk6tcDcjbs8ox7LCclKmYfXdy0eBEybIKI+A5lTjqLgqQ+AsxbpGg2nIdOM4oncGGF0BpTK0lJ3xlU4UVKW2tmtK2BQIr5IxH14BymFATm66W36zG3Do="
 
 script:
   - mkdir -p $HOME/.m2
-  - echo "<settings xmlns='http://maven.apache.org/SETTINGS/1.0.0'><servers><server><id>nexus.terrestris.de-snapshots</id><username>gs-deploy</username><password>$DEPLOY_PASSWORD</password></server></servers></settings>" > $HOME/.m2/settings.xml
+  - echo "<settings xmlns='http://maven.apache.org/SETTINGS/1.0.0'><servers><server><id>nexus.terrestris.de-snapshots</id><username>$DEPLOY_USERNAME</username><password>$DEPLOY_PASSWORD</password></server></servers></settings>" > $HOME/.m2/settings.xml
   - if [ "$TRAVIS_BRANCH" == "master" -a "$TRAVIS_PULL_REQUEST" == "false" ]; then mvn --batch-mode clean deploy; fi
   - if [ "$TRAVIS_BRANCH" != "master" -o "$TRAVIS_PULL_REQUEST" != "false" ]; then mvn --batch-mode clean install; fi
 
