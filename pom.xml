@@ -4,7 +4,7 @@
 
   <groupId>de.terrestris</groupId>
   <artifactId>snappy-script-generator</artifactId>
-  <version>0.0.2-SNAPSHOT</version>
+  <version>0.0.1-SNAPSHOT</version>
   <name>snappy-script-generator</name>
   <description>Generate snappy scripts from XML files</description>
   <packaging>jar</packaging>
