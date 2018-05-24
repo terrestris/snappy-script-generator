@@ -17,7 +17,8 @@ env:
 script:
   - mkdir -p $HOME/.m2
   - echo "<settings xmlns='http://maven.apache.org/SETTINGS/1.0.0'><servers><server><id>nexus.terrestris.de-snapshots</id><username>gs-deploy</username><password>$DEPLOY_PASSWORD</password></server></servers></settings>" > $HOME/.m2/settings.xml
-  - mvn --batch-mode clean deploy
+  - if [ "$TRAVIS_BRANCH == "master" -a "$TRAVIS_PULL_REQUEST == "false" ]; then mvn --batch-mode clean deploy; fi
+  - if [ "$TRAVIS_BRANCH != "master" -o "$TRAVIS_PULL_REQUEST != "false" ]; then mvn --batch-mode clean install; fi
 
 notifications:
   email:
