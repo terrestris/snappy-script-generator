@@ -1,27 +1,21 @@
 language: java
-
 cache:
   directories:
   - "$HOME/.m2"
-
 sudo: false
-
 jdk:
 - oraclejdk8
 - openjdk8
-
 env:
   global:
-  - secure: "ro1fE/bu2cdruczEYofvdpvfrPcEZIGTTXH//jUPEbGeAtMc3IsoXJs0fOq1VFq7taA5FO0iwzsgfmSdUckD9FysBgCwinSkXQRUZjgFKfQHF/nrD8TXyHmN88SQGe1PphIXqS1iafGzjxDGRjX6DoLNu26FQQSWr9h25PSVE2vQKg56nB8kNOn9IhmMuuLWa5FRTAjrhP5pPzWLVOWdoo6YQBe34dCX8X3HO8Sn0i/L/Rvb7q2O3LQxRRh3Vt1d7yqcDBbbwXEHUpgcMQsG1O/Xi5tu5cB+M6A9DM9KEEQW8nY27ifXtosn5GnhCY/OByMa/Wlvag4m1aDCTyBYmznaSg8Rj5SOZlfpKJXZeJPgeMTGp4SEAGhVIy5tRA31oNq+MuxrGazF5lB1hLeIWOXWe2T3QE9WsmkoQU37QgVL8RLIvnp1XVQK8lTygHWS4RylEjKmN25waa9gXrfm0wJKkfIRmi2AwNugLnmp9zfXhLxaK65HELOZCOPxZucQbSy1OlfIm8c0D9US/tc8r9Wh8UWnpYwvGqKPbQuLyA40X80VkoSzpzwBk6tcDcjbs8ox7LCclKmYfXdy0eBEybIKI+A5lTjqLgqQ+AsxbpGg2nIdOM4oncGGF0BpTK0lJ3xlU4UVKW2tmtK2BQIr5IxH14BymFATm66W36zG3Do="
-  - secure: "TK+Y2X5jkVlq2TjZFhJ4bXDTRIiqpPC7uveD/duTD3cQ7l/84twZknU4sIVJ2oaa5tUpTSDhuk1tmoPSULPfD673SJz1Kx1S1NJUKHbq1lmB8mtok7OFoOLuchC8LcttIcbM1jLl+OiygEdTyd+B9rWY1M960CQfutPy+t4uiCk5B516BdyTVhaUC2FXASDJqBnW40+D4VaDr9hVrQRa0EI1LL5TDvfc+aajmL7Z7K/c5EeW3fMdg12niXA42Ga7vYKtcw3ynFL4ACs9c6NviuANIAw0XWAYRdtBoZ6SulfgjlYCVI5npyMzKx7/fbJLL9FKktfnUCa6aHXUuo4gE/VXC82SIbKPvqyI/gI8HCPoi72r0pGCeuYDK6ZEOPPyBLYqMX0jtDVWi9q0ZRB9Ey91/SAqm3fx7/Y88RM97OBojo5k/J1CqCOlqCpy7IulF6tgaYejtNZ51adSIS6vwwcOShUaw7Pkk0IWeOJ7gAxy1CHURWSIlXZkrWshmW0E/QrkwqfpjxELnpbOWpMZO78+8e0n8H0J2nCtzNCeNJpw1zZGBhrpEr0aH8nd4TlEX7daYKrvUcPI5vPLk29O59Qx91FDEZE95ROPGYq4duK0N6ZtRh0M4n6bdiCP8YimVvJJqx+8suYjN3P6mIv5uhRHYa2r4r4vO5eHBtE0BEc="
-
+  - secure: pdAOuJeb2OC+TUDJWar/OlAaqcgGijcgNc4oxYcoYqwXIqw9aggn/kHiivC60KT+9R+N1kNOBHUz7yVe1hcysUZLmTDXqFsHq08O1+++/ELmOmPW7AIzG2XIWa/SVq3xh4kmkjec5XnYhbNndB6hQsZ16Y9Jr5ATgknPh86Nt5B/X0KefqIz8Dt7rW2styVJTK60en83lzT9gyr5euwAMuNC2zmhNyGV4zl3XhRrURipUNmCg9s0IGJUeojR9OkOT98Lk79/G5BSUh9vw8UiBW1pnuQcMIfLbi/KsBmlQ0crU8dxkROmYpACHAgBqlA4pcrpaXDdUSMDwPcLjtPI5hApXJSOSe7E/TLgRsI+Q5b+aDO/+5FQ0YZ74bK0hPyT/QUS+B/AzIoyf20q0PR6VGsOcKuXXaZuWqZsNbKGdibbS+r8WdZWt4wxq35s+JUQH2xv4zLpYlG0tleZd+vEg1qMS7wUYKtMWnbk0h1uavO5EIq0Ia316ISI4sW6X+HUImV6HIiSgWzZfQJZRG41BFKwD1XAbcUmo3YZ4LDGSSWKX/CWj8lJ+tZxD0MrMzZZ3EyNgrjTOR0BAgnODSX6AAUKc1ynnNYw9lIgFtjlRAR8jdkxiy30WFPyt0vbVpFOWEIE8YfVLpt/jx9xbMyKdP3yTujo3WmAwRT6HRt9fJ4=
+  - secure: r17QZkDPC1osMNwzBzo59TXLCQbKBOmDUYNeMRPjKbVF026GLtqtiIcTDmF5fppGI/InhExF55Hs4pAnFvG76JJD5rGG7rmlV7vGE+o3830OzvZBzSltISZI1475MWCoFpu6MJhqmwHZQgrzFK8XUYTixGg3i2X0eJZF45XsJXpDxbiAysOLAipltFyokx+h6o62Y+ZYVHxGiCah2QjvQ1WIyDmi/fSkSsSQU9KO7iY0v1F5hLWJuouY0U628UmoOvNd3H5kluzXGbHyUFTyIbB/XpqQ0mahFLZl2TFSJYzukWRMBZ2ZEg8k8gqZgO/2a9BcboCNyJ5AOYUMRG1GhveWvNnjCu8g44mZTfN/1DpI01S5umKRsPigNz3+P8ZlA12mse0h8W4M5NQyvY8qhDxVepGs1E2TIkM1a/i6EzPd+b9c8FTlp7qhhX/09fHlWJXU+kI4ipNsn9ijoo04FpFZ9JGzoStUB124UD9P7F/GY50ZAHJmmcVhk5enA8LlvxTZ/WP4Ds2LYYHBQX6sWi0664ZnYoSwSpRAnf6cBnfccX9j057ZIHJwukOP2Wl6hBQsS1XhU/P8IuDNyvsLdSmg/raUkJMlaWc3QEQYojD73c3KJoNGHLqJfM2S6cGBwOEvfahjVQUQowpKfUy/vhY3HwEHIp03yTyz8hqrxgE=
 script:
-- echo "Secure vars: $TRAVIS_SECURE_ENV_VARS"
+- echo "Secure vars $TRAVIS_SECURE_ENV_VARS"
 - mkdir -p $HOME/.m2
 - echo "<settings xmlns='http://maven.apache.org/SETTINGS/1.0.0'><servers><server><id>nexus.terrestris.de-snapshots</id><username>$DEPLOY_USERNAME</username><password>$DEPLOY_PASSWORD</password></server></servers></settings>" > $HOME/.m2/settings.xml
-- if [ "$TRAVIS_BRANCH" == "master" -a "$TRAVIS_PULL_REQUEST" == "false" ]; then mvn --batch-mode clean deploy; fi
-- if [ "$TRAVIS_BRANCH" != "master" -o "$TRAVIS_PULL_REQUEST" != "false" ]; then mvn --batch-mode clean install; fi
-
+- if [ "$TRAVIS_BRANCH" == "master" -a "$TRAVIS_PULL_REQUEST" == "false" ]; then mvn -B clean deploy; fi
+- if [ "$TRAVIS_BRANCH" != "master" -o "$TRAVIS_PULL_REQUEST" != "false" ]; then mvn -B clean install; fi
 notifications:
   email:
     on_success: never
