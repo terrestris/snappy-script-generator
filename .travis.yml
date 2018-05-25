@@ -14,7 +14,7 @@ jdk:
 script:
 - mkdir -p $HOME/.m2
 - echo "<settings xmlns='http://maven.apache.org/SETTINGS/1.0.0'><servers><server><id>nexus.terrestris.de-snapshots</id><username>$DEPLOY_USERNAME</username><password>$DEPLOY_PASSWORD</password></server></servers></settings>" > $HOME/.m2/settings.xml
-- if [ "$TRAVIS_BRANCH" == "master" -a "$TRAVIS_PULL_REQUEST" == "false" ]; then mvn -B clean deploy; fi
+- if [ "$TRAVIS_BRANCH" == "master" -a "$TRAVIS_PULL_REQUEST" == "false" -a -z $TRAVIS_TAG ]; then mvn -B clean deploy; fi
 - if [ "$TRAVIS_BRANCH" != "master" -o "$TRAVIS_PULL_REQUEST" != "false" ]; then mvn -B clean install; fi
 
 notifications:
