@@ -66,16 +66,12 @@ public class SnappyScriptGenerator {
     }
 
     private static void generateHeader(PrintWriter out) {
-        out.println("import snappy");
-        out.println("from snappy import ProductIO");
-        out.println("from snappy import HashMap");
+        out.println("from snappy import ProductIO, HashMap, GPF, jpy");
         out.println("import os, sys, gc");
-        out.println("from snappy import GPF");
-        out.println("from snappy import jpy");
         out.println("from osgeo.osr import SpatialReference");
         out.println();
         out.println("GPF.getDefaultInstance().getOperatorSpiRegistry().loadOperatorSpis()");
-        out.println("HashMap = snappy.jpy.get_type('java.util.HashMap')");
+        out.println("HashMap = jpy.get_type('java.util.HashMap')");
         out.println();
         out.println("# generated operations follow");
     }
