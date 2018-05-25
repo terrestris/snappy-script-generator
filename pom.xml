@@ -4,7 +4,7 @@
 
   <groupId>de.terrestris</groupId>
   <artifactId>snappy-script-generator</artifactId>
-  <version>0.0.2-SNAPSHOT</version>
+  <version>0.0.2</version>
   <name>snappy-script-generator</name>
   <description>Generate snappy scripts from XML files</description>
   <packaging>jar</packaging>
@@ -13,7 +13,7 @@
     <connection>scm:git:git@github.com:terrestris/snappy-script-generator.git</connection>
     <developerConnection>scm:git:git@github.com:terrestris/snappy-script-generator.git</developerConnection>
     <url>https://github.com/terrestris/snappy-script-generator</url>
-    <tag>HEAD</tag>
+    <tag>0.0.2</tag>
   </scm>
 
   <distributionManagement>
