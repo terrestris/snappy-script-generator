@@ -114,7 +114,7 @@ public class SnappyScriptGenerator {
             }
             out.println();
             out.println("# perform " + operator);
-            out.println("artifact = GPF.createProduct('" + operator + "', parameters, calibration)");
+            out.println("artifact = GPF.createProduct('" + operator + "', parameters, artifact)");
             out.println("print '" + operator + " is done.'");
             out.println();
         }
