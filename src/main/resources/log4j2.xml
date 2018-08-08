@@ -7,7 +7,7 @@
         </Console>
     </Appenders>
     <Loggers>
-        <Logger additivity="false" name="de.terrestris" level="debug">
+        <Logger additivity="false" name="de.terrestris" level="info">
             <AppenderRef ref="Console" />
         </Logger>
         <Root level="error">
