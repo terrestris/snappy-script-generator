@@ -8,6 +8,7 @@ import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.util.*;
 import java.util.regex.Pattern;
 
@@ -21,6 +22,8 @@ public class SnappyScriptGenerator {
     private static Pattern BOOLEAN = Pattern.compile("true|false");
 
     private static Pattern NUMBER = Pattern.compile("[0-9]+\\.?[0-9]*");
+
+    private static int counter = 0;
 
     private static class TargetBand {
         private String name;
@@ -107,12 +110,27 @@ public class SnappyScriptGenerator {
         return map;
     }
 
-    private static void convertNode(XMLStreamReader in, PrintWriter out) throws XMLStreamException {
+    private static void convertNode(XMLStreamReader in, PrintWriter out, Map<String, String> idMap) throws XMLStreamException {
         String operator = null;
         Map<String, Object> map = null;
+        String id = null;
+        List<String> sources = new ArrayList<>();
         while (!(in.isEndElement() && in.getName().equals(new QName("node")))) {
+            if (in.isStartElement() && in.getName().equals(new QName("node"))) {
+                id = in.getAttributeValue(null, "id");
+                idMap.put(id, "artifact" + ++counter);
+            }
             if (in.isStartElement() && in.getName().equals(new QName("operator"))) {
                 operator = in.getElementText();
+            }
+            if (in.isStartElement() && in.getName().equals(new QName("sources"))) {
+                while (!(in.isEndElement() && in.getName().equals(new QName("sources")))) {
+                    if (in.isStartElement() && in.getLocalName().startsWith("sourceProduct")) {
+                        String sourceId = in.getAttributeValue("", "refid");
+                        sources.add(idMap.get(sourceId));
+                    }
+                    in.next();
+                }
             }
             if (in.isStartElement() && in.getName().equals(new QName("parameters"))) {
                 map = parseParameters(in);
@@ -120,7 +138,7 @@ public class SnappyScriptGenerator {
             in.next();
         }
         if (operator != null) {
-            generateNodeCode(operator, map, out);
+            generateNodeCode(operator, map, out, idMap, id, sources);
         }
         out.flush();
     }
@@ -136,49 +154,61 @@ public class SnappyScriptGenerator {
         out.println("# generated operations follow");
     }
 
-    private static void generateNodeCode(String operator, Map<String, Object> map, PrintWriter out) {
-        if (operator.equals("Read")) {
-            out.println("####################");
-            out.println("# read data from file");
-            out.println("####################");
-            out.println("artifact = ProductIO.readProduct('" + map.get("file") + "')");
-            out.println("print 'Done reading from file.'");
-            out.println();
-        } else if (operator.equals("Write")) {
-            out.println("####################");
-            out.println("# write result to file");
-            out.println("####################");
-            out.println("ProductIO.writeProduct(artifact, '" + map.get("file") + "', '" + map.get("formatName") + "')");
-            out.println("print 'Done writing to file.'");
-            out.println();
-        } else {
-            out.println("####################");
-            out.println("# perform " + operator);
-            out.println("####################");
-            out.println("parameters = HashMap()");
-            for (Map.Entry<String, Object> e : map.entrySet()) {
-                Object value = e.getValue();
-                if (value instanceof Map) {
-                    writeTargetBands((Map) value, out);
-                } else if (value instanceof Boolean) {
-                    out.println("parameters.put('" + e.getKey() + "', " + (((Boolean) value) ? "True" : "False") + ")");
-                } else if (value instanceof Double) {
-                    out.println("parameters.put('" + e.getKey() + "', " + value + ")");
-                } else if (e.getKey().equals("mapProjection")) {
-                    value = value.toString().replaceAll("\\n", " ");
-                    out.println("srs = SpatialReference('" + value + "')");
-                    out.println("srs.AutoIdentifyEPSG()");
-                    out.println("code = srs.GetAuthorityName(None) + ':' + srs.GetAuthorityCode(None)");
-                    out.println("parameters.put('mapProjection', code)");
-                } else {
-                    out.println("parameters.put('" + e.getKey() + "', '" + value + "')");
+    private static void generateNodeCode(String operator, Map<String, Object> map, PrintWriter out, Map<String, String> idMap, String id, List<String> sources) {
+        switch (operator) {
+            case "Read":
+                String name = idMap.get(id);
+                out.println("####################");
+                out.println("# read data from file");
+                out.println("####################");
+                out.println(name + " = ProductIO.readProduct('" + map.get("file") + "')");
+                out.println("print 'Done reading from file.'");
+                out.println();
+                break;
+            case "Write":
+                out.println("####################");
+                out.println("# write result to file");
+                out.println("####################");
+                out.println("ProductIO.writeProduct(" + idMap.get(sources.get(0)) + ", '" + map.get("file") + "', '" + map.get("formatName") + "')");
+                out.println("print 'Done writing to file.'");
+                out.println();
+                break;
+            default:
+                out.println("####################");
+                out.println("# perform " + operator);
+                out.println("####################");
+                out.println("parameters = HashMap()");
+                for (Map.Entry<String, Object> e : map.entrySet()) {
+                    Object value = e.getValue();
+                    if (value instanceof Map) {
+                        writeTargetBands((Map) value, out);
+                    } else if (value instanceof Boolean) {
+                        out.println("parameters.put('" + e.getKey() + "', " + (((Boolean) value) ? "True" : "False") + ")");
+                    } else if (value instanceof Double) {
+                        out.println("parameters.put('" + e.getKey() + "', " + value + ")");
+                    } else if (e.getKey().equals("mapProjection")) {
+                        value = value.toString().replaceAll("\\n", " ");
+                        out.println("srs = SpatialReference('" + value + "')");
+                        out.println("srs.AutoIdentifyEPSG()");
+                        out.println("code = srs.GetAuthorityName(None) + ':' + srs.GetAuthorityCode(None)");
+                        out.println("parameters.put('mapProjection', code)");
+                    } else {
+                        out.println("parameters.put('" + e.getKey() + "', '" + value + "')");
+                    }
                 }
-            }
-            out.println();
-            out.println("# perform " + operator);
-            out.println("artifact = GPF.createProduct('" + operator + "', parameters, artifact)");
-            out.println("print '" + operator + " is done.'");
-            out.println();
+                out.println();
+                out.println("# perform " + operator);
+                String artifacts;
+                if (sources.size() > 1) {
+                    artifacts = "[" + String.join(",", sources) + "]";
+                } else {
+                    artifacts = sources.get(0);
+                }
+                name = idMap.get(id);
+                out.println(name + " = GPF.createProduct('" + operator + "', parameters, " + artifacts + ")");
+                out.println("print '" + operator + " is done.'");
+                out.println();
+                break;
         }
     }
 
@@ -194,7 +224,7 @@ public class SnappyScriptGenerator {
             if (band.name != null && !band.name.isEmpty()) {
                 out.println(name + ".name = '" + band.name + "'");
             }
-            if (band.type != null && !band.name.isEmpty()) {
+            if (band.type != null && !band.type.isEmpty()) {
                 out.println(name + ".type = '" + band.type + "'");
             }
             if (band.expression != null && !band.expression.isEmpty()) {
@@ -221,12 +251,13 @@ public class SnappyScriptGenerator {
         out.println("parameters.put('targetBands', targetBands)");
     }
 
-    public static void generate(InputStream xml, OutputStream py) throws XMLStreamException, UnsupportedEncodingException {
+    private static void generate(InputStream xml, OutputStream py) throws XMLStreamException {
         XMLStreamReader in = XMLInputFactory.newInstance().createXMLStreamReader(xml);
-        PrintWriter out = new PrintWriter(new OutputStreamWriter(py, "UTF-8"));
+        PrintWriter out = new PrintWriter(new OutputStreamWriter(py, StandardCharsets.UTF_8));
         generateHeader(out);
+        Map<String, String> idMap = new HashMap<>();
         while (moveReaderToFirstMatch(in, new QName("node"))) {
-            convertNode(in, out);
+            convertNode(in, out, idMap);
         }
     }
 
